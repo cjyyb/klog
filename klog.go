@@ -852,6 +852,19 @@ func LogToStderr(stderr bool) {
 	logging.toStderr = stderr
 }
 
+// SetLogToFile sets whether to log exclusively to file
+func SetLogToFile(file string) {
+	logging.mu.Lock()
+	defer logging.mu.Unlock()
+	logging.logFile = file
+}
+// SetLogToDir sets whether to log exclusively to dir
+func SetLogToDir(dir string) {
+	logging.mu.Lock()
+	defer logging.mu.Unlock()
+	logging.logDir = dir
+}
+
 // output writes the data to the log files and releases the buffer.
 func (l *loggingT) output(s severity.Severity, logger *logWriter, buf *buffer.Buffer, depth int, file string, line int, alsoToStderr bool) {
 	var isLocked = true
