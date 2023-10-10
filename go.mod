@@ -1,4 +1,4 @@
-module github.com/cjyyb/klog
+module github.com/cjyyb/klog/v2
 
 go 1.13
 
